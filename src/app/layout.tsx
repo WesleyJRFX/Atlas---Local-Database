@@ -23,10 +23,10 @@ export const metadata: Metadata = {
   },
 };
 
-const THEME_SCRIPT = \
+const THEME_SCRIPT = `
   (function() {
     try {
-      var themes = \;
+      var themes = ${JSON.stringify(THEMES)};
       var themeId = localStorage.getItem("localdb-panel-theme") || "dark";
       var currentTheme = themes.find(function(t) { return t.id === themeId; }) || themes[0];
       
@@ -70,7 +70,7 @@ const THEME_SCRIPT = \
       root.setProperty('--info-rgb', hexToRgb(currentTheme.info));
     } catch (e) {}
   })();
-\;
+`;
 
 export default function RootLayout({
   children,
@@ -80,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="pl"
-      className={\\ \ h-full antialiased\}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

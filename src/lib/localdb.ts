@@ -102,7 +102,7 @@ function normalizeType(type: string): LocalDbColumnType {
   const cleaned = type.toString().trim();
   if (!cleaned) throw new Error("Brak typu kolumny.");
   // Strip parameters like VARCHAR(255), DECIMAL(10,2), ENUM('a','b').
-  const baseMatch = cleaned.match(/^[A-Za-z][A-Za-z0-9_ ]*/);
+  const baseMatch = cleaned.match(/^(?:CHARACTER VARYING|DOUBLE PRECISION|[A-Za-z][A-Za-z0-9_]*)/i);
   const base = (baseMatch?.[0] ?? cleaned).trim();
   const resolved = resolveColumnTypeAlias(base);
   if (!resolved) throw new Error(`Nieobsługiwany typ kolumny: ${type}.`);

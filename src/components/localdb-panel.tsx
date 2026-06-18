@@ -1,5 +1,5 @@
-﻿import { THEMES } from "@/lib/themes";
-"use client";
+﻿"use client";
+import { THEMES } from "@/lib/themes";
 
 import {
   useEffect,
@@ -209,58 +209,7 @@ function adjustColorForContrast(
 let atlasLogoCache: string | null = null;
 
 function AtlasLogo({ className }: { className?: string }) {
-  const [svg, setSvg] = useState<string | null>(atlasLogoCache);
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const [svg, setSvg] = useState<string | null>(atlasLogoCache);  useEffect(() => {
     if (atlasLogoCache) {
       setSvg(atlasLogoCache);
       return;
@@ -1021,7 +970,7 @@ export function LocalDbPanel({
   const openProperties = (type: string, name: string, schema?: string) =>
     setPropertiesTarget({ type, name, schema });
 
-    useEffect(() => {
+  useEffect(() => {
     const root = document.documentElement.style;
     const isLight = isLightColor(currentTheme.bgMain);
     if (isLight) {
@@ -1069,9 +1018,7 @@ export function LocalDbPanel({
     dangerRgb,
     infoAdjusted,
     infoRgb,
-  ]);
-
-  useEffect(() => {
+  ]);  useEffect(() => {
     function handleGlobalShortcuts(event: KeyboardEvent) {
       const target = event.target as HTMLElement | null;
       const isTyping =
@@ -1205,59 +1152,7 @@ export function LocalDbPanel({
   }, [currentTable, filter]);
   const filteredRows = filteredRowEntries.map((entry) => entry.row);
   const filteredRowIndices = filteredRowEntries.map((entry) => entry.index);
-  const [selectedRowIndices, setSelectedRowIndices] = useState<number[]>([]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const [selectedRowIndices, setSelectedRowIndices] = useState<number[]>([]);  useEffect(() => {
     setSelectedRowIndices([]);
   }, [selectedDatabase, selectedTable]);
 
@@ -1281,173 +1176,17 @@ export function LocalDbPanel({
       visibleIndices.forEach((index) => merged.add(index));
       return Array.from(merged);
     });
-  }
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }  useEffect(() => {
     if (!activeTab || (activeTab !== "home" && !selectedDatabase)) return;
     writeSavedView({ activeTab, selectedDatabase, selectedTable });
-  }, [activeTab, selectedDatabase, selectedTable]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [activeTab, selectedDatabase, selectedTable]);  useEffect(() => {
     if (!autoRefresh) return;
     const id = window.setInterval(() => {
       void refresh(selectedDatabase, selectedTable);
     }, autoRefreshInterval * 1000);
     return () => window.clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoRefresh, autoRefreshInterval, selectedDatabase, selectedTable]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [autoRefresh, autoRefreshInterval, selectedDatabase, selectedTable]);  useEffect(() => {
     let cancelled = false;
     async function checkHealth() {
       const startedAt = Date.now();
@@ -1542,59 +1281,7 @@ export function LocalDbPanel({
       });
     },
     [],
-  );
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  );  useEffect(() => {
     pushLogRef.current = pushLog;
   }, [pushLog]);
 
@@ -5203,59 +4890,7 @@ function GlobalSearchDialog({
   onOpenTab: (tab: Tab) => void;
 }) {
   const [query, setQuery] = useState("");
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const inputRef = React.useRef<HTMLInputElement | null>(null);  useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
@@ -6801,59 +6436,7 @@ function DatabaseManagementCard({
     } finally {
       setSnapshotsLoading(false);
     }
-  }, [databaseName]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [databaseName]);  useEffect(() => {
     loadSnapshots();
   }, [loadSnapshots]);
 
@@ -8972,59 +8555,7 @@ function PropertiesDialog({
     };
     stats: { rows?: number; columns?: number; indexes?: number; checks?: number; sizeBytes?: number; columns_stats?: { name: string; type: string; nullable: boolean; nulls: number; nullsPct: number; distinct: number; cardinalityPct: number; avgLength: number | null; min: number | string | null; max: number | string | null }[] } | null;
   } | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const [error, setError] = useState<string | null>(null);  useEffect(() => {
     let cancelled = false;
     setData(null);
     setError(null);
@@ -9270,59 +8801,7 @@ function DashboardPanel({
   consoleLog: ConsoleEntry[];
   onSelectTable: (tableName: string) => void;
 }) {
-  const [latencyHistory, setLatencyHistory] = useState<number[]>([]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const [latencyHistory, setLatencyHistory] = useState<number[]>([]);  useEffect(() => {
     if (healthStatus.latencyMs === null) return;
     setLatencyHistory((current) => {
       const next = [...current, healthStatus.latencyMs!].slice(-30);
@@ -9581,59 +9060,7 @@ function ErdPanel({
       next[table.name] = { x: col * 340 + 32, y: row * 390 + 32 };
     });
     return next;
-  }, [tables]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [tables]);  useEffect(() => {
     if (!database) return;
     const saved = window.localStorage.getItem(storageKey);
     if (saved) {
@@ -9654,59 +9081,7 @@ function ErdPanel({
     setPositions(defaultPositions);
     setManualEdges([]);
     setRemovedEdgeIds([]);
-  }, [database, defaultPositions, storageKey]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [database, defaultPositions, storageKey]);  useEffect(() => {
     if (!database || tables.length === 0) return;
     window.localStorage.setItem(
       storageKey,
@@ -10360,59 +9735,7 @@ function BackupPanel({
 }) {
   const [snapshots, setSnapshots] = useState<SnapshotEntry[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const [error, setError] = useState<string | null>(null);  useEffect(() => {
     if (!database) return;
     let cancelled = false;
     setLoading(true);
@@ -11786,59 +11109,7 @@ function SqlPanel(props: SqlPanelProps) {
     const all = new Set<string>();
     for (const table of tables) for (const column of table.columns) all.add(column.name);
     return Array.from(all);
-  }, [tables]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [tables]);  useEffect(() => {
     setTabs((current) => {
       const target = current.findIndex((tab) => tab.id === activeTabId);
       if (target === -1) return current;
@@ -11847,59 +11118,7 @@ function SqlPanel(props: SqlPanelProps) {
       next[target] = { ...next[target], sql };
       return next;
     });
-  }, [sql, activeTabId]);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  }, [sql, activeTabId]);  useEffect(() => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem("localdb-panel-sql-tabs", JSON.stringify(tabs));
     window.localStorage.setItem("localdb-panel-sql-active", activeTabId);
@@ -12668,59 +11887,7 @@ function QueryBuilderPanel({
   const [groupBy, setGroupBy] = useState("");
   const [limit, setLimit] = useState("100");
   const [offset, setOffset] = useState("");
-  const [distinct, setDistinct] = useState(false);
-
-    useEffect(() => {
-    const root = document.documentElement.style;
-    const isLight = isLightColor(currentTheme.bgMain);
-    if (isLight) {
-      document.documentElement.classList.add("atlas-light");
-      document.documentElement.classList.remove("atlas-dark");
-    } else {
-      document.documentElement.classList.add("atlas-dark");
-      document.documentElement.classList.remove("atlas-light");
-    }
-    root.setProperty("--bg-main", currentTheme.bgMain);
-    root.setProperty("--bg-side", currentTheme.bgSide);
-    root.setProperty("--bg-card", currentTheme.bgCard);
-    root.setProperty("--border", currentTheme.border);
-    root.setProperty("--text-main", currentTheme.textMain);
-    root.setProperty("--text-muted", textMutedAdjusted);
-    root.setProperty("--accent", accentAdjusted);
-    root.setProperty("--accent-rgb", accentRgb);
-    root.setProperty("--accent-text", currentTheme.accentText);
-    root.setProperty("--bg-main-rgb", bgMainRgb);
-    root.setProperty("--bg-side-rgb", bgSideRgb);
-    root.setProperty("--bg-card-rgb", bgCardRgb);
-    root.setProperty("--border-rgb", borderRgb);
-    root.setProperty("--success", successAdjusted);
-    root.setProperty("--success-rgb", successRgb);
-    root.setProperty("--warning", warningAdjusted);
-    root.setProperty("--warning-rgb", warningRgb);
-    root.setProperty("--danger", dangerAdjusted);
-    root.setProperty("--danger-rgb", dangerRgb);
-    root.setProperty("--info", infoAdjusted);
-    root.setProperty("--info-rgb", infoRgb);
-  }, [
-    currentTheme,
-    textMutedAdjusted,
-    accentAdjusted,
-    accentRgb,
-    bgMainRgb,
-    bgSideRgb,
-    bgCardRgb,
-    borderRgb,
-    successAdjusted,
-    successRgb,
-    warningAdjusted,
-    warningRgb,
-    dangerAdjusted,
-    dangerRgb,
-    infoAdjusted,
-    infoRgb,
-  ]);
-
-  useEffect(() => {
+  const [distinct, setDistinct] = useState(false);  useEffect(() => {
     setTableName(defaultTable);
   }, [defaultTable]);
 
