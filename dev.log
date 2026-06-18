@@ -1,0 +1,13 @@
+
+> localdb-panel@0.1.0 dev
+> next dev --turbopack
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.100.185:3000
+✓ Ready in 502ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+[?25h
+
+C:\Users\jouwn\Desktop\Nowy folder\localdb-panel>

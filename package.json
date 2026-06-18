@@ -2,25 +2,95 @@
   "name": "localdb-panel",
   "version": "0.1.0",
   "private": true,
+  "main": "electron/main.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "cross-env PORT=3001 node .next/standalone/server.js",
+    "lint": "eslint",
+    "electron:dev": "concurrently -k \"next dev --turbopack\" \"wait-on http://127.0.0.1:3000 && cross-env ELECTRON_RENDERER_URL=http://127.0.0.1:3000 electron .\"",
+    "electron:start": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win nsis"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^9.4.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.18.0",
+    "mssql": "^12.5.5",
+    "mysql2": "^3.22.5",
     "next": "16.2.9",
+    "oracledb": "^7.0.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "redis": "^6.0.0",
+    "sql.js": "^1.14.1",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wait-on": "^9.0.10"
+  },
+  "build": {
+    "appId": "pl.localdb.panel",
+    "productName": "LocalDB Panel",
+    "directories": {
+      "output": "dist"
+    },
+    "afterPack": "electron/afterPack.js",
+    "files": [
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": ".next/standalone",
+        "to": "app.asar.unpacked/.next/standalone",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": ".next/static",
+        "to": "app.asar.unpacked/.next/standalone/.next/static",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "public",
+        "to": "app.asar.unpacked/.next/standalone/public",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      ".next/standalone/**/*",
+      ".next/static/**/*",
+      "public/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "artifactName": "LocalDB-Panel-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "LocalDB Panel"
+    }
   }
 }
